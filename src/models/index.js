@@ -1,4 +1,5 @@
 const dbConfig = require("../config/db.config.js");
+const { dogModel } = require("./dog.model.js");
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -21,6 +22,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.dogs = require("./dog.model.js")(sequelize, Sequelize);
+db.dogs = dogModel(sequelize, Sequelize);
 
 module.exports = db;

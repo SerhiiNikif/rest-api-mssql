@@ -1,5 +1,6 @@
 const db = require("../models");
 const Dog = db.dogs;
+const createError = require("../helpers/createError");
 
 const findAll = async (req, res) => {
     let {attribute, order, pageNumber, limit} = req.query;
@@ -39,6 +40,26 @@ const findAll = async (req, res) => {
         });
 }
 
+const create = async (req, res) => {
+    const candidate = await Dog.findOne({where: {name: req.body.name}})
+
+    if (candidate) {
+        throw createError(400, `Dog ${req.body.name} already exists`);
+    }
+
+    Dog.create({...req.body})
+        .then(data => {
+            res.status(201).json(data);
+        })
+        .catch(err => {
+            res.status(500).json({
+                message:
+                    err.message || "Some error occurred while creating the dog."
+            });
+        });
+}
+
 module.exports = {
-    findAll
+    findAll,
+    create
 };

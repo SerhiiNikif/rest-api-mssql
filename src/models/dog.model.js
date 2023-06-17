@@ -1,4 +1,6 @@
-module.exports = (sequelize, Sequelize) => {
+const Joi = require('joi');
+
+const dogModel = (sequelize, Sequelize) => {
 
     const Dog = sequelize.define("dog", {
         id: {
@@ -26,4 +28,20 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     return Dog;
+};
+
+const dogAdd = Joi.object({
+    name: Joi.string().min(2).max(255).required(),
+    color: Joi.string().min(2).max(255).required(),
+    tail_length: Joi.number().integer().min(0).required(),
+    weight: Joi.number().integer().min(0).required()
+});
+
+const schemas = {
+    dogAdd
+}
+
+module.exports = {
+    dogModel,
+    schemas
 };
