@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const Fixtures = require('sequelize-fixtures');
+const path = require("path");
 const cors = require('cors');
 const dotenv = require('dotenv');
 const app = express();
@@ -38,6 +40,7 @@ const start = async () => {
     try {
         await db.sequelize.authenticate();
         await db.sequelize.sync();
+        await Fixtures.loadFile(path.resolve(path.join(__dirname, 'fixtures/dogs.json')), { 'Dog': db.dogs })
         app.listen(PORT, () => console.log(`🌎 Server started on port ${PORT}`));
     } catch (e) {
         console.log(e);

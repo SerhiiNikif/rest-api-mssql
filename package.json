@@ -16,7 +16,8 @@
     "express": "^4.18.2",
     "joi": "^17.9.2",
     "mssql": "^9.1.1",
-    "sequelize": "^6.32.0"
+    "sequelize": "^6.32.0",
+    "sequelize-fixtures": "^1.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
