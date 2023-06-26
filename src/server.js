@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const app = express();
 
 const db = require("./models");
+const { initDB } = require('./models/db'); 
 const dogRoutes = require("./routes/dog-routes");
 
 var corsOptions = {
@@ -38,6 +39,7 @@ const PORT = process.env.PORT || 8080;
 
 const start = async () => {
     try {
+        await initDB();
         await db.sequelize.authenticate();
         await db.sequelize.sync();
         await Fixtures.loadFile(path.resolve(path.join(__dirname, 'fixtures/dogs.json')), { 'Dog': db.dogs })
