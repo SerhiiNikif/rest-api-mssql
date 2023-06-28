@@ -3,7 +3,7 @@ dotenv.config();
 
 module.exports = {
     HOST: process.env.HOST,
-    PORT: process.env.DB_PORT,
+    PORT: process.env.NODE_ENV === 'docker' ? +process.env.MSSQL_DOCKER_PORT : +process.env.MSSQL_LOCAL_PORT,
     USER: process.env.DB_USER,
     PASSWORD: process.env.DB_PASSWORD,
     DB: process.env.DB_NAME,

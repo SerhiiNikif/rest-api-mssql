@@ -1,13 +1,12 @@
 const sql = require('mssql');
-const dotenv = require('dotenv');
-dotenv.config();
+const dbConfig = require("../config/db.config.js");
 
 const configDB = {
-    server: process.env.HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    port: +process.env.DB_PORT,
-    database: process.env.DB_NAME,
+    server: dbConfig.HOST,
+    user: dbConfig.USER,
+    password: dbConfig.PASSWORD,
+    port: dbConfig.PORT,
+    database: dbConfig.DB,
     options: {
         enableArithAbort: true,
         trustServerCertificate: true
