@@ -29,7 +29,7 @@ npm run dev:docker
 ```
 The `animals` DB and `dogs` table will be created, the fields will be filled.
 
-##Let's login to Server Management Studio:
+## Let's login to Server Management Studio:
 __Server name__: `localhost`(Local use) __or__ `localhost, 14333`(Docker)
 __Login__: sa
 __Password__: <DB_PASSWORD>
