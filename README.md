@@ -2,13 +2,16 @@
 
 ## 1. Clone Project into your local machine
 ```
-git clone https://github.com/SerhiiNikif/rest-api-mssql-sequelize.git
+git clone https://github.com/SerhiiNikif/rest-api-mssql.git
 ```
 
 ## 2. Go into project folder and install project dependencies.
 
 ```
-cd rest-api-mssql-sequelize && npm i
+cd rest-api-mssql
+```
+```
+npm install
 ```
 
 ## 4. Setting environment file `.env`.
